@@ -1,0 +1,31 @@
+/* Style for Type.jsx */
+
+.SameType-container{
+    max-width: 800px;  
+}
+.SameType-Tittle{
+    font-size: 26px;
+    padding-bottom: 40px;
+}
+
+.SameType-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.SameType-face {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.SameType-name {
+    text-transform: capitalize;
+    margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .SameType-section {
+        max-width: calc(10 * (80px + 10px));
+    }
+}

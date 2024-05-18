@@ -1,6 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500;700&family=Mulish:wght@400;700&display=swap');
 @import url('colors.css');
+@import url('PokeCardStyle.css');
+@import url('TypeCardStyle.css');
+@import url('SameTypeStyle.css');
+@import url('PokemonStyle.css');
 
 * {
     margin: 0;
     padding: 0;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+}
+
+
+header {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* Dette gjelder navigeringen i Header */
+.nav-container {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+/* Dette gjelder søkefunksjonen i Header */
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search input[type="text"] {
+  border: 1px solid;
+  height: 20px;
+  width: 20rem;
+}
+
+.search button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  margin-left: 5px;
+}
+
+.search button :hover {
+  cursor: pointer;
+}
+
+/* Dette gjelder Logo: UIN POKEDEX */
+a {
+  font-weight: 500;
+  color: #333;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color:#444243;
 }
