@@ -1,0 +1,41 @@
+/* style for Pokemon.jsx */
+
+.pokemon-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: subgrid;  
+    max-width: 800px;
+  }
+
+  .pokemon-details ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .pokemon-image img {
+    width: 200px;
+    height: auto;
+  }
+  .types-data li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .pokemon-stats{
+    margin-top: 20px;
+  }
+
+.pokemon-stats-data li {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 50px;
+  }
+  
+  .pokemon-abilities {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+.ability-description{
+    padding-bottom: 10px;
+}

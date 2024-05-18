@@ -1,17 +1,24 @@
 // PokeCard.jsx
 
-const MainPokemonsSection = ({ pokemon }) => {
-  return (
-    <div>
-      <h3>Main Pokemons</h3>
-      <p>Seksjonen Main pokemons henter ut de ni første pokemonene fra pokemonapiet, 
-        vise disse i henhold til skissen.</p>
-      <p>Minimum for hva som skal skrives ut er navnet til pokemonen.</p>
-      <p>Videre skal det trykkes på en pokemon og vise informasjon om pokemonen i en ny side</p> 
-      <p>(Pokemon/navn_til_den_valgte_pokemon)</p>
-    </div>
-  );
-};
+import { Link } from "react-router-dom";
 
+const MainPokemonsSection = ({ pokemon }) => {
+    return (
+        <main className="home-PokemonsCard-container">
+            <h2 className="Pokemoms-Tittle">MAIN POKEMONS</h2>
+            <section className="PokemonsCard">
+                {pokemon && pokemon.map((item) => (
+                    <article className="PokemonsCard-face" key={item.name}>
+                        <Link to={`/pokemon/${item.name}`} className="PokemonsCard-link">
+                            <span className="PokemonsCard-details">
+                                <p className="PokemonsCard-name">{item.name}</p>
+                            </span>
+                        </Link>
+                    </article>
+                ))}
+            </section>
+        </main>
+    );
+};
 
 export default MainPokemonsSection;

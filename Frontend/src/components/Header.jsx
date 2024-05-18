@@ -2,7 +2,19 @@
 
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ searchTerm, setSearchTerm }) => {
+
+  const handleSearch = () => {
+    if (searchTerm.trim() !== "") {
+      return `/search/${searchTerm}`;
+    }
+    return null;
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <header>
       <nav className="nav-container">
@@ -19,14 +31,19 @@ const Header = () => {
         <input
           type="text"
           name="search"
-          placeholder="Search for pokemon"
+          placeholder="Søk etter pokemon"
+          value={searchTerm}
+          onChange={handleSearchChange} 
         />
+        <Link to={handleSearch()}>
           <button type="button">
             <i className="material-icons search-icon">search</i>
           </button>
+        </Link>
       </div>
     </header>
   );
 };
+
 
 export default Header;
