@@ -1,5 +1,7 @@
+// SearchResult.jsx
+
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const SearchResults = () => {
     const [searchResults, setSearchResults] = useState([]);
@@ -7,13 +9,43 @@ const SearchResults = () => {
     const { q } = useParams();
 
     useEffect(() => {
-        // Her skal vi legge til kode for å hente søkeresultater basert på 'q' parameteren.
-        // Denne useEffect vil bli kalt hver gang 'q' parameteren endres, noe som betyr at vi henter nye søkeresultater når brukeren søker etter forskjellige navn.
+        if (q && q.trim() !== "") {
+            const fetchData = async () => {
+                try {
+                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${q}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setSearchResults([data]);
+                        setNotFound(false);
+                    } else {
+                        setSearchResults([]);
+                        setNotFound(true);
+                    }
+                } catch (error) {
+                    console.error("Error fetching search results:", error);
+                }
+            };
+
+            fetchData();
+        }
     }, [q]);
 
     return (
         <section>
-            {/* Placeholder for visning av søkeresultater */}
+            {notFound && q ? (
+                <h2>No results found for {q}</h2>
+            ) : (
+                <>
+                    <h2>Results for: {q}</h2>
+                    <ul>
+                        {searchResults.map((pokemon) => (
+                            <li key={pokemon.id}>
+                                <Link to={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </>
+            )}
         </section>
     );
 };
