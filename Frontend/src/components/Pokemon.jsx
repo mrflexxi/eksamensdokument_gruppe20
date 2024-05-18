@@ -1,3 +1,5 @@
+// Pokemon.jsx
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -6,26 +8,54 @@ function Pokemon() {
   const [pokemonData, setPokemonData] = useState(null);
 
   useEffect(() => {
-    // Her skal vi legge til kode for å hente data om den valgte Pokémonen ved hjelp av 'name' parameteren.
-    // Denne useEffect vil bli kalt hver gang 'name' parameteren endres, noe som betyr at vi henter nye data når brukeren navigerer til en annen Pokémon.
+    fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+      .then(response => response.json())
+      .then(data => {
+        setPokemonData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching pokemon data:', error);
+      });
   }, [name]);
 
   const fetchAbilityDescription = async (ability) => {
-    // Her skal vi legge til kode for å hente beskrivelsen av en spesifikk evne (ability) til en Pokémon.
-    // Denne funksjonen vil bli brukt til å hente og legge til beskrivelser for hver av Pokémonens evner.
+    const response = await fetch(ability.ability.url);
+    const data = await response.json();
+    return data.effect_entries.find(entry => entry.language.name === 'en').effect;
   };
 
   useEffect(() => {
-    // Her skal vi legge til kode for å utføre ulike oppgaver når pokemonData endres.
-    // For eksempel kan vi bruke dette til å hente beskrivelser for hver av Pokémonens evner etter at hoveddataene er hentet.
+    if (pokemonData) {
+      const fetchAbilities = async () => {
+        const abilitiesWithDescription = await Promise.all(
+          pokemonData.abilities.map(async ability => {
+            const description = await fetchAbilityDescription(ability);
+            return { ...ability, description };
+          })
+        );
+        setPokemonData(prevState => ({
+          ...prevState,
+          abilities: abilitiesWithDescription
+        }));
+      };
+      fetchAbilities();
+    }
   }, [pokemonData]);
+
+  if (!pokemonData) {
+    return <div>Waiting for data.</div>;
+  }
 
   return (
     <main className="pokemon-details">
       <article>
-        <h2>{pokemonData.name.toUpperCase()}</h2>
-        <section className="pokemon-image">
-          {/*Bilde av pokemon*/}
+        <section className="pokemon-info">
+          <div className="pokemon-name">
+            <h2>{pokemonData.name.toUpperCase()}</h2>
+          </div>
+          <div className="pokemon-image">
+            <img src={pokemonData.sprites.front_default} alt={pokemonData.name} />
+          </div>
         </section>
       </article>
       <article>
@@ -33,13 +63,21 @@ function Pokemon() {
           <div className="pokemon-types">
             <h3>TYPES</h3>
             <ul className="types-data">
-              {/* Placeholder for visning av pokémontyper */}
+              {pokemonData.types.map((type, index) => (
+                <li key={index}>
+                  {type.type.name}
+                </li>
+              ))}
             </ul>
           </div>
           <div className="pokemon-stats">
             <h3>STATS</h3>
-            <ul>
-              {/* Placeholder for visning av pokémonstatistikker */}
+            <ul className="pokemon-stats-data">
+              {pokemonData.stats.map((stat, index) => (
+                <li key={index}>
+                  {stat.stat.name}: {stat.base_stat}
+                </li>
+              ))}
             </ul>
           </div>
         </section>
@@ -47,7 +85,12 @@ function Pokemon() {
       <article className="pokemon-abilities">
         <h3>ABILITIES</h3>
         <ul>
-          {/* Placeholder for visning av pokémon-evner */}
+          {pokemonData.abilities.map((ability, index) => (
+            <li key={index}>
+              <p>{ability.ability.name}</p>
+              <p className="ability-description">{ability.description}</p>
+            </li>
+          ))}
         </ul>
       </article>
     </main>

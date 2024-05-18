@@ -1,24 +1,45 @@
 // Type.jsx
 
-//import { useState, useEffect } from 'react';
-//import { useParams, useHistory } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import fetchPokemonOfType from './API_SameType';
 
 const Type = () => {
-    // Denne delen av koden vil inneholde funksjonaliteten for å vise informasjon om pokémoner av den valgte typen.
-    // Dette vil inkludere datafetching for å hente informasjon om pokémoner av typen 'typeName'.
-    // Deretter vil det vise en liste over disse pokémonene, samt tillate brukere å klikke på en pokémon for å se detaljer om den.
-    // Når den senere funksjonaliteten er implementert, vil denne komponenten vise bildet og navnet til den valgte pokemonstypen,
-    // og deretter liste opp alle pokemon som har samme type som den valgte typen.
-    // Det vil også tillate brukere å klikke på en pokemon for å navigere til detaljsiden for den valgte pokemonen.
-    return (
+    const { typeName } = useParams();
+    const [pokemonOfType, setPokemonOfType] = useState([]);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const resolvedPokemons = await fetchPokemonOfType(typeName);
+                setPokemonOfType(resolvedPokemons);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, [typeName]);
+
+    const handleClick = (pokemonName) => {
+        navigate(`/pokemon/${pokemonName}`);
+    };
+
+    return (
         <main>
-            <section className="title-container">
-                {/*</section>Her skal det ligge bilde og navnet til den valgte pokemonstype*/}
+            <section className="SameType-container">
+                <h2 className="SameType-Tittle">{typeName.toUpperCase()}</h2>
             </section>
-            <section className="PokeWithSameType-section">
-                {/*Her listes opp alle pokemon som har samme type som den valgte typen*/}
-           </section>
+            <section className="SameType-section">
+                {pokemonOfType.map((pokemon) => (
+                    <article className="SameType-face" key={pokemon.id}>
+                        <Link to={`/pokemon/${pokemon.name}`} onClick={() => handleClick(pokemon.name)}>
+                            <p className="SameType-name">{pokemon.name}</p>
+                        </Link>
+                    </article>
+                ))}
+            </section>
         </main>
     );
 };
