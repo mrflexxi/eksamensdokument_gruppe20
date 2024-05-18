@@ -1,0 +1,29 @@
+/* style for PokeCard.jsx*/
+
+.home-PokemonsCard-container{
+    max-width: 800px;
+ }
+ 
+ .Pokemoms-Tittle {
+    color: #333;
+    text-align: left;
+    font-size: 26px;
+    padding-bottom: 40px;
+ }
+ 
+ .PokemonsCard {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+ }
+ 
+ .PokemonsCard-name {
+    text-transform: capitalize;
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    padding-top: 20px;
+    cursor: pointer;
+ }
