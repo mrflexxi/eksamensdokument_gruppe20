@@ -1,33 +1,36 @@
-/* style for TypeCard.jsx */
+/* Style for TypeCard.jsx */
 
 .type-container{
   max-width: 800px;
 }
 
-.types-Tittle {
-  color: #333;
-  text-align: left;
-  font-size: 26px;
-  padding-bottom: 20px;
-  padding-top: 20px;;
-}
+.types-Tittle{
+    color: #333;
+    text-align: left;
+    font-size: 26px;
+    padding-bottom: 30px;
+    padding-top: 20px;;
+  }
 
 .type-grid {
-  display: flex; 
-  flex-wrap: nowrap; 
-  gap: 5px;
-}
-
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1px;
+  }
+  
 .type-box {
-  display: flex; 
-  background-color: transparent;
-  align-items: center; 
-  justify-content: center; 
-  padding: 5px;
-}
+    display: grid;
+    grid-template-columns: auto;
+    background-color: rgb(241, 237, 237);
+    align-items: center;
+    justify-content: flex-start;
+    width: 125px;
+    margin: 5px;
+    border-radius: 7%;
+  }
 
 .type-name {
-  text-transform: capitalize;
-  font-size: 12px;
-  cursor: pointer;
-}
+    text-transform: capitalize;
+    font-size: 12px;
+    margin-left: 10px;
+  }
