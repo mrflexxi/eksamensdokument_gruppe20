@@ -1,41 +1,61 @@
 /* style for Pokemon.jsx */
 
 .pokemon-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: subgrid;  
-    max-width: 800px;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: subgrid;  
+  max-width: 800px;
+}
 
-  .pokemon-details ul {
-    list-style: none;
-    padding: 0;
-  }
+.pokemon-details ul {
+  list-style: none;
+  padding: 0;
+}
 
-  .pokemon-image img {
-    width: 200px;
-    height: auto;
-  }
-  .types-data li {
-    display: inline-block;
-    margin-right: 10px;
-  }
+.pokemon-info{
+  padding-right: 20px;
+}
 
-  .pokemon-stats{
-    margin-top: 20px;
-  }
+.pokemon-image {
+  display: grid;
+  place-items: center;
+}
+
+.pokemon-image img {
+  width: 200px;
+  height: auto;
+}
+
+.types-data {
+  background-color: rgb(245, 245, 245);
+  margin-top: 5px;
+  border-radius: 5%;
+}
+
+.types-data li {
+  display: inline-block;
+  margin-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.pokemon-stats{
+  margin-top: 20px;
+}
 
 .pokemon-stats-data li {
-    display: flex;
-    justify-content: space-between;
-    padding-right: 50px;
-  }
-  
-  .pokemon-abilities {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
+  display: flex;
+  justify-content: space-between;
+  padding-right: 50px;
+}
+
+.pokemon-abilities {
+  grid-column: span 2;
+  grid-row: span 2;
+}
 
 .ability-description{
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
