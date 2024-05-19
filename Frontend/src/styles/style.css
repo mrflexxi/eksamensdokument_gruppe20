@@ -4,6 +4,8 @@
 @import url('TypeCardStyle.css');
 @import url('SameTypeStyle.css');
 @import url('PokemonStyle.css');
+@import url('SearchResultsStyle.css');
+
 
 * {
     margin: 0;
