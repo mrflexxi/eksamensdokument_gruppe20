@@ -1,42 +1,79 @@
-/* Style for Type.jsx */
+/* SameTypeStyle.css */
+/* style for Type.jsx */
 
-.SameType-container{
-    max-width: 800px;  
+.SameType-container {
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
-.SameType-Tittle{
-    font-size: 26px;
-    padding-bottom: 40px;
+
+.SameType-container img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.SameType-Tittle {
+    padding-top: 5px;
 }
 
 .SameType-section {
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    margin: 0 auto;
 }
 
 .SameType-face {
-    background-color: rgb(234, 241, 248);
-    margin-right: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    padding-bottom: 10px;
-    margin: 1px;
-    border-radius: 10px;
+    border: 1px solid #ccc;
     padding: 20px;
+    border-radius: 8px;
+}
+
+.SameType-face:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.SameType-item-nr {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.SameType-img {
+    text-align: center;
+}
+
+.SameType-img img {
+    width: 80px;
+    height: auto;
 }
 
 .SameType-name {
-    text-transform: capitalize;
-    margin: 0;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
-@media screen and (min-width: 768px) {
+.SameType-types {
+    font-style: italic;
+    margin-bottom: 5px;
+}
 
-    .SameType-section {
-        max-width: calc(10 * (80px + 10px));
+@media (max-width: 768px) {
+    .SameType-face {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 8px;
+    }
+
+    .SameType-container img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        margin-left: 10px;
     }
 }
