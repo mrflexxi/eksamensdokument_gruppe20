@@ -1,36 +1,69 @@
+/* TypeCardStyle.css */
 /* Style for TypeCard.jsx */
 
-.type-container{
+.type-container {
   max-width: 800px;
+  margin: 0 auto;
 }
 
-.types-Tittle{
-    color: #333;
-    text-align: left;
-    font-size: 26px;
-    padding-bottom: 30px;
-    padding-top: 20px;;
-  }
+.Types-Tittle {
+  color: #333;
+  text-align: left;
+  font-size: 26px;
+  padding-bottom: 40px;
+}
 
 .type-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 1px;
-  }
-  
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 1px;
+}
+
 .type-box {
-    display: grid;
-    grid-template-columns: auto;
-    background-color: rgb(241, 237, 237);
-    align-items: center;
-    justify-content: flex-start;
-    width: 125px;
-    margin: 5px;
-    border-radius: 7%;
-  }
+  display: grid;
+  grid-template-columns: auto;
+  align-items: center;
+  justify-content: flex-start;
+  width: 125px;
+  margin: 5px;
+  border-radius: 7%;
+}
 
 .type-name {
-    text-transform: capitalize;
-    font-size: 12px;
-    margin-left: 10px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.type-content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.type-image {
+  width: 45px;
+  height: auto;
+  padding-top: 5px;
+  margin-left: 10px;
+  padding-bottom: 5px;
+}
+
+
+/* Tilpasse stiler for mindre skjermer */
+@media (max-width: 800px) {
+  .type-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
   }
+
+  .type-box {
+    width: calc(100% - 10px);
+  }
+}
+
+@media (max-width: 500px) {
+  .type-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
