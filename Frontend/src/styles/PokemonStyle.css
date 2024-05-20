@@ -1,3 +1,4 @@
+/* PokemonStyle */
 /* style for Pokemon.jsx */
 
 .pokemon-details {
@@ -19,6 +20,7 @@
 .pokemon-image {
   display: grid;
   place-items: center;
+  border-radius: 5px;
 }
 
 .pokemon-image img {
@@ -27,7 +29,6 @@
 }
 
 .types-data {
-  background-color: rgb(245, 245, 245);
   margin-top: 5px;
   border-radius: 5%;
 }
@@ -39,6 +40,19 @@
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px;
+  border-radius: 5px;
+}
+
+.type-logo {
+  width: 30px;
+  height: auto;
+  padding-inline-start: 5px;
+  padding-right: 10px;
+  margin-bottom: -10px;
+}
+
+.type-logo img{
+padding-top: 30px;
 }
 
 .pokemon-stats{
@@ -58,4 +72,22 @@
 
 .ability-description{
   padding-bottom: 10px;
+}
+
+/* Responsivitet for mindre skjermer */
+
+@media (max-width: 768px) {
+  .pokemon-details {
+    padding: 0 20px;
+  }
+
+  .pokemon-image img {
+    width: 100%; 
+  }
+
+  .types-data {
+    padding-bottom: 5px;
+    margin: 10px 0;
+    width: 300px;
+  }  
 }

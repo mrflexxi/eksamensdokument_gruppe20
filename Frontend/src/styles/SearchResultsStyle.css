@@ -1,7 +1,48 @@
-.pokeman-search-box {
-    border: 2px solid #ccc;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    display: inline-block;
+/* SearchResults.css */
+/* Style for SearchResults.jsx */
+
+.ShowAsPokemonCard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+.Search-face {
+  display: grid;
+  grid-template-columns: auto;
+  width: 180px;
+  height: 280px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.Search-item-nr {
+  margin-bottom: 5px;
+  padding-top: 10px;
+}
+
+.Search-img img {
+  width: 80px;
+  height: auto;
+}
+
+.Search-name {
+  padding-bottom: 15px;
+}
+
+.Search-type {
+  padding-right: 5px;
+}
+
+/* Tilpasse stiler for mindre skjermer */
+@media (max-width: 500px) {
+  .ShowAsPokemonCard {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
+

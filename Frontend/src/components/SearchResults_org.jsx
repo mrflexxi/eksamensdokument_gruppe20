@@ -18,25 +18,13 @@ const SearchResults = () => {
         setLoading(true);
 
         if (q && q.trim() !== "") {
-            const searchQuery = q.substring(0, 4); // Hent de fire første bokstavene fra søket
-
             const fetchData = async () => {
                 try {
-                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1000`); // Hent alle Pokémon fra API-en
+                    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${q}`);
                     if (response.ok) {
                         const data = await response.json();
-                        const filteredResults = data.results.filter(pokemon => pokemon.name.startsWith(searchQuery)); // Filtrer ut Pokémon som starter med søket
-                        if (filteredResults.length > 0) {
-                            const pokemonData = await Promise.all(filteredResults.map(async (result) => {
-                                const pokemonResponse = await fetch(result.url);
-                                return await pokemonResponse.json();
-                            }));
-                            setSearchResults(pokemonData);
-                            setNotFound(false);
-                        } else {
-                            setSearchResults([]);
-                            setNotFound(true);
-                        }
+                        setSearchResults([data]);
+                        setNotFound(false);
                     } else {
                         setSearchResults([]);
                         setNotFound(true);
@@ -67,7 +55,7 @@ const SearchResults = () => {
                                 <Link to={`/pokemon/${pokemon.name}`} >
                                     <div>
                                         <p className="Search-item-nr">{`#${pokemon.id}`}</p>
-                                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                                        <img src={pokemon.sprites.front_default} />
                                         <p className="Search-name">Name: {pokemon.name}</p>
                                         <p className="Search-hight">Weight: {pokemon.weight}</p>
                                         <p className="Search-weight">Height: {pokemon.height}</p>
